@@ -60,5 +60,5 @@ $farm->collectProduction();
  ```php
 $production = $farm->getProduction();
 echo "Всего собрано: {$production[0]} л. молока и {$production[1]} яиц";
-
+//Всего собрано: 96 л. молока и 11 яиц
 ```
