@@ -5,8 +5,6 @@ class Farm
 {
     public string $name;
     public array $animals = array();
-    public int $milk = 0;
-    public int $eggs = 0;
     public array $production = array();
     public array $animalSchemes = array();
 
