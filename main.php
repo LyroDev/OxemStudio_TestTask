@@ -14,12 +14,14 @@ class Farm
     }
 
 
-    public function addAnimalScheme(string $type, int $minProduction, int $maxProduction){
+    public function addAnimalScheme(string $type, int $minProduction, int $maxProduction)
+    {
         $this->animalSchemes[$type] = [$minProduction, $maxProduction];
         $this->production[$type] = 0;
     }
 
-    public function addAnimals(string $type, int $amount){
+    public function addAnimals(string $type, int $amount)
+    {
         if (array_key_exists($type, $this->animalSchemes)){
             for ($i = 1; $i <= $amount; $i++){
                 $prod = $this->animalSchemes[$type];
@@ -27,20 +29,22 @@ class Farm
                 array_push($this->animals, $animal);
             }
         }else{
-            throw new Exception('Такой схемы животных нет');
+            throw new Exception('There is no scheme for this animal');
         }
-
     }
 
-    public function collectProduction(){
+    public function collectProduction()
+    {
         foreach ($this->animals as $animal) {
             $this->production[$animal->getType()] += $animal->collect();
         }
     }
 
-    public function getProduction(string $type){
+    public function getProduction(string $type)
+    {
         return $this->production[$type];
     }
+
 }
 
 
@@ -72,11 +76,11 @@ class Animal
 
 //Создаем ферму
 $farm = new Farm("Uncle Bob's farm");
-
-//Добавляем животных
+//Добавляем схемы животных
 $farm->addAnimalScheme("Корова", 8, 12);
+$farm->addAnimalScheme("Курица", 0, 1);
+//Добавляем животных
 $farm->addAnimals("Корова", 10);
-$farm->addAnimalScheme("Курица", 0,1);
 $farm->addAnimals("Курица", 20);
 //Собираем продукцию
 $farm->collectProduction();
